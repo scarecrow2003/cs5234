@@ -24,8 +24,8 @@ for i in range(n + 1, n + t + 1):
 P = np.asarray(P)
 Q = np.asarray(Q)
 
-l = 1
-k = 100
+l = 20
+k = 10
 h = [np.random.choice(d, k, replace=False) for _ in range(l)]
 T = []
 for i in range(l):
@@ -53,7 +53,7 @@ for i in range(t):
         val = T[j].get(key)
         if val != None:
             for idx in val:
-                if np.sum(P[idx] == y) <= 20:
+                if np.sum(P[idx] != y) <= 20:
                     result = idx
                 else:
                     num += 1
@@ -63,7 +63,20 @@ for i in range(t):
             break
     ann.append(result)
 
-print(len(ann))
-
+# use brute force to check, the above algorithm only has one query that is different from the actual result.
+real = []
 for i in range(t):
+    y = Q[i]
+    min = 100
+    index = -1
+    for j in range(n):
+        dis = np.sum(y != P[j])
+        if dis < min:
+            min = dis
+            index = j
+    real.append(index)
+print("number of result that is different from the actual result: ")
+print(np.sum(ann != real))
+
+for i in range(50):
    print(ann[i])
