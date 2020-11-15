@@ -64,19 +64,23 @@ for i in range(t):
     ann.append(result)
 
 # use brute force to check, the above algorithm only has one query that is different from the actual result.
-real = []
-for i in range(t):
-    y = Q[i]
-    min = 100
-    index = -1
-    for j in range(n):
-        dis = np.sum(y != P[j])
-        if dis < min:
-            min = dis
-            index = j
-    real.append(index)
-print("number of result that is different from the actual result: ")
-print(np.sum(ann != real))
+# real = []
+# for i in range(t):
+#     y = Q[i]
+#     min = 100
+#     index = -1
+#     for j in range(n):
+#         dis = np.sum(y != P[j])
+#         if dis < min:
+#             min = dis
+#             index = j
+#     real.append(index)
+# print("number of result that is different from the actual result: ")
+# print(np.sum(ann != real))
 
-for i in range(50):
-   print(ann[i])
+# print("first 50 results:")
+# for i in range(50):
+#    print(ann[i])
+
+for i in range(t):
+    print(ann[i])
